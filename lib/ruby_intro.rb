@@ -6,7 +6,7 @@ def sum(array)
   # YOUR CODE HERE
   val = 0
   
-  array.each do |num|
+  array.each do |num|  
     val += num
   end
   
@@ -15,13 +15,13 @@ end
 
 def max_2_sum(array)
   # YOUR CODE HERE
-  new_arr = array.sort.reverse
+  new_arr = array.sort.reverse ### sorted and reversed
   if new_arr.length == 0
     return 0
   elsif new_arr.length == 1
     return new_arr[0]
   else
-    return new_arr[0] + new_arr[1]
+    return new_arr[0] + new_arr[1] ### reverse sorted array's 1st 2 elements
   end
   
 end
@@ -59,7 +59,7 @@ end
 
 def binary_multiple_of_4?(s)
   # YOUR CODE HERE
-  if s =~ /^[0-9]*00$/ or s == '0'
+  if s =~ /^[0-9]*00$/ or s =~ /^0+$/ ### If s is a string of 0s
     return true
   else
     return false
@@ -68,9 +68,36 @@ end
 
 # Part 3
 
-class BookInStock
+class BookInStock 
 # YOUR CODE HERE
-@@isbn = 0
-@@price = 0.0
+  def initialize(isbn, price)
+    raise ArgumentError, 'Not a valid price' if price <= 0 || isbn.length == 0 
+    @isbn = isbn
+    @price = price
+  end
+  
+  def isbn  #getter
+    @isbn
+  end
+  
+  def price  #getter
+    @price
+  end
+  
+  def isbn=(isbn) #setter 
+    @isbn = isbn
+  end
+  
+  def price=(price) #setter 
+    @price = price
+    
+
+  end
+  
+  def price_as_string
+    return format("$%.2f", @price)
+    
+  end
+  
 
 end
